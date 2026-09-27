@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Interactive periodic table with element properties, chemistry, trends, compounds and applications.">
+<title>Periodic Table Explorer</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">⚗</div>
+      <div>
+        <div class="brand-name">Periodic Table <span>Explorer</span></div>
+        <div class="brand-sub">B.Sc. Chemistry • 118 elements • Learn by interaction</div>
+      </div>
+    </div>
+    <div class="top-actions">
+      <button class="ghost-btn" id="trendBtn">Periodic Trends</button>
+      <button class="ghost-btn" id="aboutBtn">Guide</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <div class="eyebrow">INTERACTIVE CHEMISTRY ATLAS</div>
+        <h1>Explore every element,<br><em>one click at a time.</em></h1>
+        <p>Search, filter and open any element to study its electronic configuration, physical properties, oxidation states, compounds, occurrence, crystal structure and applications.</p>
+      </div>
+      <div class="hero-stat">
+        <strong>118</strong><span>elements</span>
+        <small>Groups 1–18<br>Blocks s • p • d • f</small>
+      </div>
+    </section>
+
+    <section class="controls card">
+      <div class="search-wrap">
+        <span>⌕</span><input id="search" type="search" placeholder="Search element, symbol or atomic number…" autocomplete="off">
+      </div>
+      <select id="blockFilter" aria-label="Block filter">
+        <option value="all">All blocks</option><option value="s">s-block</option><option value="p">p-block</option><option value="d">d-block</option><option value="f">f-block</option>
+      </select>
+      <select id="typeFilter" aria-label="Type filter">
+        <option value="all">All types</option><option value="metal">Metals</option><option value="metalloid">Metalloids</option><option value="nonmetal">Non-metals</option><option value="noble">Noble gases</option>
+      </select>
+      <button class="clear-btn" id="clearBtn">Clear</button>
+    </section>
+
+    <section class="legend card">
+      <div class="legend-title">BLOCKS</div>
+      <span class="legend-item s"><i></i>s-block</span>
+      <span class="legend-item p13"><i></i>Group 13</span>
+      <span class="legend-item p14"><i></i>Group 14</span>
+      <span class="legend-item p15"><i></i>Group 15</span>
+      <span class="legend-item p16"><i></i>Group 16</span>
+      <span class="legend-item p17"><i></i>Halogens</span>
+      <span class="legend-item p18"><i></i>Noble gases</span>
+      <span class="legend-item d"><i></i>d-block</span>
+      <span class="legend-item f"><i></i>f-block</span>
+    </section>
+
+    <section class="table-card card">
+      <div class="section-head">
+        <div><h2>Periodic Table</h2><p>Click an element for its complete study card.</p></div>
+        <div class="count-pill" id="resultCount">118 / 118</div>
+      </div>
+      <div class="table-scroll">
+        <div class="group-labels">
+          <b>1</b><b>2</b><b>3</b><b>4</b><b>5</b><b>6</b><b>7</b><b>8</b><b>9</b><b>10</b><b>11</b><b>12</b><b>13</b><b>14</b><b>15</b><b>16</b><b>17</b><b>18</b>
+        </div>
+        <div id="periodicGrid" class="periodic-grid"></div>
+        <div class="series-wrap">
+          <div class="series-title">Lanthanides <small>57–71</small></div>
+          <div id="lanthanides" class="series-grid"></div>
+          <div class="series-title">Actinides <small>89–103</small></div>
+          <div id="actinides" class="series-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="details" class="details card"></section>
+
+    <section id="trends" class="trends card">
+      <div class="section-head"><div><h2>Periodic Trends</h2><p>Use position to predict broad chemical behaviour.</p></div></div>
+      <div class="trend-grid">
+        <article><div class="trend-icon blue">↘</div><h3>Atomic radius</h3><b>Decreases →</b><p>Generally decreases across a period and increases down a group.</p></article>
+        <article><div class="trend-icon violet">↗</div><h3>Ionization energy</h3><b>Increases →</b><p>Generally increases across a period and decreases down a group.</p></article>
+        <article><div class="trend-icon green">↗</div><h3>Electronegativity</h3><b>Increases →</b><p>Generally rises toward fluorine, with well-known exceptions.</p></article>
+        <article><div class="trend-icon orange">↙</div><h3>Metallic character</h3><b>Increases ↙</b><p>Generally increases toward the lower-left of the table.</p></article>
+        <article><div class="trend-icon pink">e⁻</div><h3>Electron affinity</h3><b>Group dependent</b><p>Halogens strongly favour electron gain; exceptions matter.</p></article>
+        <article><div class="trend-icon cyan">±</div><h3>Oxidation states</h3><b>Position dependent</b><p>Main-group patterns follow valence electrons; transition metals vary.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer>Periodic Table Explorer • Designed as a student-friendly chemistry reference • Physical constants should be checked against your prescribed reference text.</footer>
+</div>
+
+<div class="modal" id="guideModal" aria-hidden="true">
+  <div class="modal-box">
+    <button class="modal-close" data-close>×</button>
+    <h2>How to use</h2>
+    <p>Use the search box to find an element by name, symbol or atomic number. Filters can isolate s, p, d or f blocks and broad element types.</p>
+    <p>The p-block is colour-coded by Groups 13–18 so that carbon group, nitrogen group, oxygen group, halogens and noble gases are visually separated.</p>
+    <p>Click an element to open its study card. The card includes chemistry, structure, occurrence, applications and an interesting fact.</p>
+  </div>
+</div>
+<script src="/app.js"></script>
+</body>
+</html>

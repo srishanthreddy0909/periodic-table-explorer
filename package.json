@@ -1,0 +1,9 @@
+{
+  "name": "periodic-table-explorer",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Interactive 118-element periodic table for chemistry students",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
